@@ -893,7 +893,7 @@ function Screen3({ onNext }) {
 
           <div className="envelope-centerpiece-stage">
             <motion.div 
-              className={`3d-hogwarts-envelope ${envelopeOpened ? 'isOpen' : ''}`}
+              className={`hogwarts-envelope-3d ${envelopeOpened ? 'isOpen' : ''}`}
               initial={{ scale: 0, rotate: -70, y: -400 }}
               animate={{ scale: 1, rotate: 0, y: 0 }}
               transition={{ delay: 1.2, type: "spring", stiffness: 90, damping: 14 }}
