@@ -1,0 +1,1360 @@
+/* ==========================================================================
+   GLOBAL CONFIG & MAGIC ACCENTS
+   ========================================================================== */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #111a36 0%, #0B1226 100%); /* Elegant Midnight Blue */
+  color: #FFFFFF; /* Frost White */
+  font-family: 'Montserrat', sans-serif;
+  user-select: none;
+}
+
+/* Elegant glowing fixed brand header */
+.brand-name {
+  position: fixed;
+  top: 2rem;
+  left: 2.5rem;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 
+    0 0 8px rgba(255, 255, 255, 0.8), 
+    0 0 20px #D4AF37, 
+    0 0 35px #D4AF37;
+  z-index: 1000;
+  pointer-events: none;
+  animation: logo-glow 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes logo-glow {
+  0% {
+    text-shadow: 
+      0 0 8px rgba(255, 255, 255, 0.8), 
+      0 0 15px #D4AF37, 
+      0 0 25px #D4AF37;
+    transform: scale(1);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 1), 
+      0 0 30px #D4AF37, 
+      0 0 50px #D4AF37, 
+      0 0 70px #D4AF37;
+    transform: scale(1.02);
+  }
+}
+
+/* Audio Control Switcher */
+.mute-btn {
+  position: fixed;
+  top: 2.5rem;
+  right: 2.5rem;
+  background: rgba(11, 18, 38, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #D4AF37;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.mute-btn:hover {
+  background: #D4AF37;
+  color: #0B1226;
+  box-shadow: 0 0 15px #D4AF37;
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   SCREEN 1: CALL TO ADVENTURE & MAGIC PORTAL
+   ========================================================================== */
+.screen-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  z-index: 10;
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Concentric layered glowing magical portal */
+.portal-wrapper {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+}
+
+.portal-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.ring-outer {
+  width: 100%;
+  height: 100%;
+  border: 3px dashed rgba(212, 175, 55, 0.6);
+  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.ring-runic {
+  width: 82%;
+  height: 82%;
+  border: 2px dotted #FFFFFF;
+  opacity: 0.7;
+}
+
+.ring-inner {
+  width: 65%;
+  height: 65%;
+  border: 2px solid #D4AF37;
+  border-style: double;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.portal-center {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(11, 18, 38, 0.95) 75%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.4);
+  z-index: 2;
+  overflow: hidden;
+}
+
+.portal-hologram {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, transparent, rgba(255, 255, 255, 0.25), transparent, rgba(212, 175, 55, 0.25));
+  filter: blur(2px);
+  animation: portal-spin 8s linear infinite;
+}
+
+@keyframes portal-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.portal-symbols {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: #D4AF37;
+  text-shadow: 0 0 8px #D4AF37;
+  z-index: 3;
+}
+
+.portal-glow-halo {
+  position: absolute;
+  width: 108%;
+  height: 108%;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 60%, rgba(212, 175, 55, 0.15) 100%);
+  animation: pulse-portal 3s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-portal {
+  0% { transform: scale(0.98); opacity: 0.7; }
+  100% { transform: scale(1.05); opacity: 1; }
+}
+
+/* Typography screen 1 */
+.question {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #FFFFFF;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+/* Button Layout & Mechanics */
+.buttons-container {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 85px;
+  position: relative;
+  width: 100%;
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, #FFE699 0%, #D4AF37 50%, #B38F22 100%);
+  color: #0B1226;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 1.1rem 3rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-no {
+  background-color: rgba(40, 40, 45, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  padding: 1.1rem 2.8rem;
+  border-radius: 50px;
+  cursor: not-allowed;
+  transition: all 0.18s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* White screen magical flash */
+.flash-overlay-white {
+  position: fixed;
+  inset: 0;
+  background-color: #FFFFFF;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SCREEN 2: MAGICAL TRIALS DOCK & PUZZLE TEMPLATE
+   ========================================================================== */
+.screen-2 {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Runes Dock (Star/Celtic) top right */
+.runes-dock {
+  position: fixed;
+  top: 2rem;
+  right: 6.5rem; /* Pushed slightly left of the mute button */
+  display: flex;
+  gap: 1.2rem;
+  z-index: 1000;
+}
+
+.magical-rune {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4a4a5a;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.rune-svg {
+  width: 100%;
+  height: 100%;
+  color: #4a4a5a;
+  transition: color 0.6s, filter 0.6s;
+}
+
+.rune-spark {
+  position: absolute;
+  font-size: 0.8rem;
+  color: #D4AF37;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s;
+}
+
+/* Glow lit states */
+.magical-rune.lit .rune-svg {
+  color: #D4AF37;
+  filter: drop-shadow(0 0 10px #D4AF37) drop-shadow(0 0 20px #D4AF37);
+}
+
+.magical-rune.lit .rune-spark {
+  opacity: 1;
+  transform: scale(1.3);
+  animation: float-spark 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes float-spark {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-5px) scale(1.3); }
+}
+
+/* Generic Puzzle Box container */
+.puzzle-box {
+  background: rgba(11, 18, 38, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6), 
+    inset 0 0 30px rgba(212, 175, 55, 0.05);
+  padding: 3.5rem 3rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 620px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 10;
+}
+
+.puzzle-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 2.1rem;
+  color: #D4AF37;
+  margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.puzzle-riddle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #E2E8F0;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   PUZZLE 1: DETECTIVE MAGNIFYING GLASS & FORM
+   -------------------------------------------------------------------------- */
+.detective-mag-glass {
+  position: relative;
+  width: 90px;
+  height: 90px;
+}
+
+.mag-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mag-lens {
+  animation: shine-lens 3s infinite ease-in-out;
+}
+
+@keyframes shine-lens {
+  0%, 100% { fill: rgba(212, 175, 55, 0.05); }
+  50% { fill: rgba(255, 255, 255, 0.2); }
+}
+
+.mag-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  pointer-events: none;
+}
+
+.puzzle-form {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 1rem;
+}
+
+.cipher-input-box {
+  flex: 1;
+  background: rgba(8, 12, 26, 0.8);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  color: #FFFFFF;
+  padding: 0.9rem 1.6rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.cipher-input-box:focus {
+  border-color: #D4AF37;
+  box-shadow: 
+    0 0 15px rgba(212, 175, 55, 0.4),
+    inset 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.btn-puzzle-submit {
+  background: #D4AF37;
+  color: #0B1226;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0 2.2rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-puzzle-submit:hover {
+  background: #FFE699;
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.6);
+}
+
+/* Shake on incorrect guess */
+.cipher-shake {
+  animation: shake-error 0.5s ease-in-out;
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4) !important;
+}
+
+@keyframes shake-error {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+/* --------------------------------------------------------------------------
+   PUZZLE 2: PIRATE TREASURE CHEST & DRAG JIGSAW
+   ========================================================================== */
+.pirate-treasure-chest {
+  position: relative;
+  width: 100px;
+  height: 80px;
+}
+
+.chest-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+}
+
+.chest-shimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 40%, rgba(212, 175, 55, 0.2) 50%, transparent 60%);
+  top: 0;
+  left: 0;
+  animation: chest-sparkle 3s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes chest-sparkle {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 2x2 board holding locked pieces / empty placeholders */
+.jigsaw-board {
+  display: grid;
+  grid-template-columns: repeat(2, 110px);
+  grid-template-rows: repeat(2, 110px);
+  gap: 4px;
+  background: rgba(8, 12, 26, 0.9);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  padding: 6px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
+  margin: 1rem 0;
+}
+
+.jigsaw-slot {
+  width: 110px;
+  height: 110px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.jigsaw-slot.empty {
+  border: 1.5px dashed rgba(212, 175, 55, 0.25);
+  background-color: rgba(212, 175, 55, 0.02);
+}
+
+.jigsaw-slot-guide {
+  font-size: 1.1rem;
+  color: rgba(212, 175, 55, 0.15);
+}
+
+.jigsaw-piece-locked {
+  width: 100%;
+  height: 100%;
+  background-size: 220px 220px; /* Board width 220px */
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+/* Dock showing draggable scrambled pieces */
+.jigsaw-dock {
+  display: flex;
+  gap: 1.5rem;
+  min-height: 115px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(8, 12, 26, 0.4);
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.8rem;
+  border: 1px dashed rgba(255,255,255,0.06);
+}
+
+.jigsaw-piece-draggable {
+  width: 90px;
+  height: 90px;
+  background-size: 180px 180px; /* Scaled for scattered items */
+  border-radius: 8px;
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.5);
+  cursor: grab;
+}
+
+.jigsaw-piece-draggable:active {
+  cursor: grabbing;
+}
+
+.jigsaw-success-badge {
+  color: #10B981;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   PUZZLE 3: THE HIDDEN KEYS ROOM
+   ========================================================================== */
+.keys-room-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 6rem;
+  z-index: 10;
+}
+
+.keys-room-header {
+  text-align: center;
+  max-width: 700px;
+  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+}
+
+.text-glow-white {
+  text-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+.flying-keys-arena {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Key container */
+.key-container {
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  z-index: 15;
+  transition: filter 0.3s;
+}
+
+.winged-key-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.key-svg-body {
+  width: 32px;
+  height: 32px;
+  color: #B3B3CC;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  z-index: 3;
+}
+
+/* Glowing special target key */
+.glowing-special-key .key-svg-body {
+  color: #FFFFFF;
+}
+
+.glowing-special-key {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
+}
+
+/* Fluttering wings */
+.magical-wing {
+  position: absolute;
+  width: 32px;
+  height: 20px;
+  background-color: rgba(240, 248, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  z-index: 1;
+  top: 15px;
+}
+
+.wing-left {
+  left: -20px;
+  border-radius: 80% 20% 20% 80%;
+  transform-origin: right center;
+  animation: flap-wing-l 0.16s infinite alternate ease-in-out;
+}
+
+.wing-right {
+  right: -20px;
+  border-radius: 20% 80% 80% 20%;
+  transform-origin: left center;
+  animation: flap-wing-r 0.16s infinite alternate ease-in-out;
+}
+
+/* Wing flap animations */
+@keyframes flap-wing-l {
+  0% { transform: rotateY(0deg) skewY(0); }
+  100% { transform: rotateY(70deg) skewY(-5deg); }
+}
+
+@keyframes flap-wing-r {
+  0% { transform: rotateY(0deg) skewY(0); }
+  100% { transform: rotateY(-70deg) skewY(5deg); }
+}
+
+/* Broken/Bent wing visuals */
+.wing-broken-bent {
+  transform: rotate(55deg) translateY(6px) scaleY(0.7) !important;
+  animation: weak-flutter 0.4s infinite alternate ease-in-out !important;
+  background-color: rgba(240, 248, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: none !important;
+}
+
+@keyframes weak-flutter {
+  0% { transform: rotate(55deg) translateY(6px) scaleY(0.7) rotateX(0); }
+  100% { transform: rotate(55deg) translateY(6px) scaleY(0.7) rotateX(25deg); }
+}
+
+/* ==========================================================================
+   SCREEN 3: THE VAULT DOOR & THE ENVELOPE LETTER
+   ========================================================================== */
+.screen-3 {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #1b2646 0%, #080c1b 100%);
+  overflow: hidden;
+}
+
+/* Heavy Mechanical Vault Door split style */
+.heavy-vault-door {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+}
+
+.vault-outer-rim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 12px solid #5a5a6a;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.rim-bolt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 24px;
+  background: #3a3a46;
+  border: 2px solid #7a7a8a;
+  border-radius: 3px;
+  margin-top: -12px;
+  margin-left: -8px;
+}
+
+/* Left & Right steel slide doors */
+.vault-plate-left, .vault-plate-right {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: repeating-linear-gradient(45deg, #2b2b35 0px, #2b2b35 15px, #363643 15px, #363643 30px);
+  border: 4px solid #4a4a5a;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.7);
+  box-sizing: border-box;
+  transition: transform 1.6s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+}
+
+.vault-plate-left {
+  left: 0;
+  border-radius: 220px 0 0 220px;
+  border-right: 3px solid #8c6e14;
+}
+
+.vault-plate-right {
+  right: 0;
+  border-radius: 0 220px 220px 0;
+  border-left: 3px solid #8c6e14;
+}
+
+.vault-central-mechanism {
+  position: absolute;
+  z-index: 5;
+}
+
+.vault-wheel {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #D4AF37;
+  border: 8px solid #a6841c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.4);
+}
+
+.wheel-spoke {
+  position: absolute;
+  background: #a6841c;
+  border: 2px solid #5c470a;
+}
+
+.spoke-1 { width: 140px; height: 16px; top: 82px; left: 20px; }
+.spoke-2 { width: 16px; height: 140px; left: 82px; top: 20px; }
+.spoke-3 { width: 120px; height: 16px; top: 82px; left: 30px; transform: rotate(45deg); }
+.spoke-4 { width: 120px; height: 16px; top: 82px; left: 30px; transform: rotate(-45deg); }
+
+.wheel-center-nub {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #FFF;
+  border: 4px solid #D4AF37;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+}
+
+/* Vault opening splitting animation */
+.heavy-vault-door.unlatching .vault-plate-left {
+  transform: translateX(-100%) scaleX(0.9);
+}
+
+.heavy-vault-door.unlatching .vault-plate-right {
+  transform: translateX(100%) scaleX(0.9);
+}
+
+.heavy-vault-door.unlatching .vault-central-mechanism {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.3s;
+}
+
+/* Owl Swoop Carrier */
+.hedwig-owl-carrier {
+  position: absolute;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.owl-svg {
+  width: 140px;
+  height: 110px;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+}
+
+/* Envelope Container and 3D folding structure */
+.envelope-centerpiece-stage {
+  position: relative;
+  width: 480px;
+  height: 330px;
+  perspective: 1200px;
+  z-index: 10;
+}
+
+.3d-hogwarts-envelope {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.envelope-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+}
+
+.back-panel {
+  background-color: #ebd6a9;
+  border: 2px solid #cbb88f;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  border-radius: 8px;
+}
+
+/* Solid V-Pocket covering the letter */
+.envelope-front-pocket {
+  background: linear-gradient(135deg, #f6e3ba 0%, #ebd5a7 100%);
+  border-radius: 8px;
+  border: 2px solid #cbb88f;
+  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,0.06);
+}
+
+/* Rotating Flap on top - folds exactly down to center */
+.envelope-flap-3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 172px;
+  background: linear-gradient(to bottom, #ebd6a9 0%, #dcc69a 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  z-index: 6;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  transition: transform 0.8s ease;
+}
+
+.isOpen .envelope-flap-3d {
+  transform: rotateX(180deg);
+  z-index: 1; /* flip to background behind the letter */
+}
+
+/* Hogwarts Red Wax Seal */
+.hogwarts-wax-seal {
+  position: absolute;
+  top: 145px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65px;
+  height: 65px;
+  background-color: #A62121; /* Crimson Wax Red */
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 
+    inset 0 0 12px rgba(0,0,0,0.6), 
+    0 5px 15px rgba(0,0,0,0.4);
+  border: 1px solid #7c1212;
+}
+
+.seal-monogram {
+  font-family: 'Cinzel', serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #D4AF37;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+/* Premium parchment letter slides up */
+.parchment-letter {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  height: 310px;
+  z-index: 2;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  overflow-y: auto;
+}
+
+/* Realistic Aged scroll styling */
+.scroll-paper-texture {
+  background-color: #fdf5e6;
+  background-image: radial-gradient(circle, transparent 20%, rgba(212, 175, 55, 0.05) 100%);
+  border: 1px solid #e1d3b5;
+  height: 100%;
+  width: 100%;
+  padding: 2.2rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+}
+
+.letter-margins {
+  max-width: 100%;
+  text-align: justify;
+}
+
+.letter-header-salutation {
+  font-family: 'Tangerine', cursive;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #2b1b0b;
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
+
+.letter-body-prose {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: #3b2a1a;
+  margin: 0 0 1.2rem 0;
+}
+
+.letter-signature-block {
+  font-family: 'Tangerine', cursive;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #2b1b0b;
+  line-height: 1;
+  text-align: right;
+  margin: 1.5rem 0 0 0;
+}
+
+.letter-signature-block span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Proceed button Gringotts */
+.btn-gringotts-proceed {
+  position: absolute;
+  bottom: 2.5rem;
+  background: linear-gradient(135deg, #FFE699 0%, #D4AF37 50%, #B38F22 100%);
+  color: #0B1226;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 1rem 2.5rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s;
+  z-index: 999;
+}
+
+.btn-gringotts-proceed:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.7);
+}
+
+/* ==========================================================================
+   SCREEN 4: GRINGOTTS COINS REWARDS
+   ========================================================================== */
+.screen-4 {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1.5rem;
+}
+
+.gringotts-vault-heading {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.8rem;
+  color: #D4AF37;
+  text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+  margin-top: -1.5rem;
+  text-align: center;
+}
+
+.gringotts-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #B3B3CC;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+}
+
+.coins-vault-row {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+
+.coin-3d-wrapper {
+  width: 270px;
+  height: 270px;
+  perspective: 1000px;
+}
+
+.gringotts-premium-coin {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+  cursor: pointer;
+}
+
+.gringotts-premium-coin.isFlipped {
+  transform: rotateY(180deg);
+}
+
+/* Card faces setup */
+.coin-side {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* FRONT: Intricately detailed 3D gold coin */
+.coin-face-front {
+  background: radial-gradient(circle, #FFE699 0%, #D4AF37 60%, #9C7D1A 100%);
+  border: 10px solid #8c6e14;
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.6), 
+    inset 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.coin-relief-edge {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 2px dashed #5c470a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0.5rem;
+  box-sizing: border-box;
+}
+
+.coin-runic-orbit {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #5c470a;
+  letter-spacing: 1px;
+}
+
+.coin-central-crest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #4b3908;
+}
+
+.coin-crest-svg {
+  width: 48px;
+  height: 48px;
+}
+
+.coin-value-text {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-top: 4px;
+  text-shadow: 0 1px 0px rgba(255,255,255,0.4);
+}
+
+.coin-filigree-decor {
+  font-size: 0.75rem;
+  color: #5c470a;
+}
+
+/* BACK: Premium Pro Gringotts Certificate Reveal Card */
+.coin-face-back {
+  background: radial-gradient(circle at center, #111a36 0%, #0B1226 100%) !important;
+  border: 4px solid #D4AF37 !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(212, 175, 55, 0.25) !important;
+  border-radius: 50%;
+  padding: 1.25rem;
+  overflow: hidden;
+}
+
+.coin-back-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  color: #FFFFFF;
+}
+
+.gringotts-certificate-border {
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(212, 175, 55, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.voucher-header {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #D4AF37;
+  opacity: 0.85;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 4px rgba(212, 175, 55, 0.4);
+}
+
+.reward-image-wrapper {
+  position: relative;
+  width: 110px;
+  height: 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.reward-vector-img {
+  width: 95px;
+  height: 80px;
+  object-fit: contain;
+  z-index: 2;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.6));
+}
+
+.image-halo-glow {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulse-halo 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-halo {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.18); opacity: 0.95; }
+}
+
+.reward-card-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.35), 0 2px 4px rgba(0,0,0,0.8);
+  text-align: center;
+}
+
+.reward-divider {
+  font-size: 0.6rem;
+  color: #D4AF37;
+  letter-spacing: 4px;
+  margin: 0.3rem 0;
+  opacity: 0.75;
+}
+
+.reward-card-status {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #10B981; /* Emerald Green for Approved/Claimed */
+  letter-spacing: 0.8px;
+  margin: 0;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.08);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: inset 0 0 6px rgba(16, 185, 129, 0.1);
+}
+
+/* Elegant Red Header inside Parchment Letter */
+.letter-top-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  color: #8B2635; /* Hogwarts Crimson */
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px double rgba(139, 38, 53, 0.25);
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN ADAPTATIONS
+   ========================================================================== */
+@media (max-width: 768px) {
+  .brand-name {
+    font-size: 2.1rem;
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+  .mute-btn {
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+  .runes-dock {
+    top: 1.5rem;
+    right: 5rem;
+  }
+  .question {
+    font-size: 1.7rem;
+  }
+  .portal-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+  .puzzle-box {
+    padding: 2.5rem 1.5rem;
+  }
+  .jigsaw-board {
+    grid-template-columns: repeat(2, 90px);
+    grid-template-rows: repeat(2, 90px);
+  }
+  .jigsaw-slot, .jigsaw-piece-locked {
+    width: 90px;
+    height: 90px;
+  }
+  .jigsaw-piece-locked {
+    background-size: 180px 180px;
+  }
+  .jigsaw-piece-draggable {
+    width: 75px;
+    height: 75px;
+    background-size: 150px 150px;
+  }
+  .envelope-centerpiece-stage {
+    width: 320px;
+    height: 240px;
+  }
+  .envelope-flap-3d {
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 130px solid #dcc69a;
+  }
+  .front-overlay-left {
+    border-top: 120px solid transparent;
+    border-bottom: 120px solid transparent;
+    border-left: 160px solid #f6e3ba;
+  }
+  .front-overlay-right {
+    border-top: 120px solid transparent;
+    border-bottom: 120px solid transparent;
+    border-right: 160px solid #f6e3ba;
+  }
+  .front-overlay-bottom {
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 130px solid #ebd5a7;
+  }
+  .hogwarts-wax-seal {
+    top: 100px;
+    width: 50px;
+    height: 50px;
+  }
+  .seal-monogram {
+    font-size: 1.6rem;
+  }
+  .parchment-letter {
+    height: 220px;
+  }
+  .letter-header-salutation {
+    font-size: 2.1rem;
+  }
+  .letter-body-prose {
+    font-size: 1.05rem;
+  }
+  .coins-vault-row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .coin-3d-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+  .reward-vector-img {
+    width: 75px;
+    height: 65px;
+  }
+  .gringotts-vault-heading {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+}
